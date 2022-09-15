@@ -29,4 +29,8 @@ public class CharacterController : MonoBehaviour
     {
         characterBody.AddForce(Vector3.up * 100f);
     }
+    private void ColourChange()
+    {
+
+    }
 }
