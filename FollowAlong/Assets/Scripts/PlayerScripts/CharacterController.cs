@@ -5,25 +5,32 @@ using UnityEngine;
 public class CharacterController : MonoBehaviour
 {
     [SerializeField] private Rigidbody characterBody;
-    [SerializeField]private float f_speed = 2f;
+    [SerializeField] private float f_speed = 2f;
+    [SerializeField] private int playerIndex;
     
     void Update()
     {
-        if (Input.GetAxis("Horizontal") != 0)
+        if (TurnManager.GetInstance().IsItPlayerTurn(playerIndex))
         {
-            transform.Translate(transform.right * f_speed * Time.deltaTime * Input.GetAxis("Horizontal"));
+            if (Input.GetAxis("Horizontal") != 0)
+            {
+                transform.Translate(transform.right* f_speed * Time.deltaTime * Input.GetAxis("Horizontal"));
+            }
+
+            if (Input.GetAxis("Vertical") != 0)
+            {
+                transform.Translate(transform.forward* f_speed * Time.deltaTime * Input.GetAxis("Vertical"));
+            }
+
+            if (Input.GetKeyDown(KeyCode.Space))
+            {
+                Jump();
+            }
         }
 
-        if (Input.GetAxis("Vertical") != 0)
-        {
-            transform.Translate(transform.forward * f_speed * Time.deltaTime * Input.GetAxis("Vertical"));
-        }
 
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            Jump();
-        }
     }
+    
 
     private void Jump()
     {

@@ -30,6 +30,7 @@ public class Projectile : MonoBehaviour
     {
         GameObject collisionObject = collision.gameObject;
         Destroy(collisionObject);
+        TurnManager.GetInstance().ChangeTurn();
         //GameObject damageIndicator = Instantiate(damageIndicatorPrefab);
         //damageIndicator.transform.position = transform.position;
     }
