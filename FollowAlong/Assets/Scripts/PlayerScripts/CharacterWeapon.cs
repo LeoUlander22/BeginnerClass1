@@ -6,9 +6,12 @@ public class CharacterWeapon : MonoBehaviour
 {
   [SerializeField] private GameObject projectilePrefab;
   [SerializeField] private Transform shootingStartPosition;
+  //[SerializeField] private TrajectoryLine lineRenderer;
 
     private void Update()
     {
+        bool IsPlayerTurn;
+
         if (Input.GetKeyDown(KeyCode.V))
         {
             GameObject newProjectile = Instantiate(projectilePrefab);
